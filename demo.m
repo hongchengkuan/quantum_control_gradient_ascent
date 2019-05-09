@@ -25,9 +25,11 @@ trans_prob = @(Ef) transition_prob(Ef,psi_init,psi_target,potential, m, x,tau);
 
 %% optimization begins
 iter=0;
-Ef = zeros(100000,1);
+Ef = zeros(length(t),1);
 while 1
+    tic;
     [prob, grad, psi] = trans_prob(Ef);
+    toc;
     iter
     prob
     % you can specify the probability greater than 0.9, here 0.9 is just
