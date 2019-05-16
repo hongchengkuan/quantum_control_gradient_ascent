@@ -6,6 +6,7 @@ t_min = 0;
 t_max = 30000;
 t = linspace(t_min,t_max,100000)';
 m = 1728.468338;
+mu = 3.088*x.*exp(-x/.6);
 
 %The time intervel
 tau = t(2) - t(1);
@@ -21,32 +22,14 @@ psi_init = states(:,1);
 
 % This function calculates the transition probability, the gradient w.r.t. 
 % the electric field at each time step, and the wave function at the end
-trans_prob = @(Ef) transition_prob(Ef,psi_init,psi_target,potential, m, x,tau);
+trans_prob = @(Ef) transition_prob(Ef,psi_init,psi_target,potential, m, ...
+    mu,dx,tau);
 
 %% optimization begins
 iter=0;
 Ef = zeros(length(t),1);
-while 1
-    tic;
-    [prob, grad, psi] = trans_prob(Ef);
-    toc;
-    iter
-    prob
-    % you can specify the probability greater than 0.9, here 0.9 is just
-    % for a demo
-    if prob > 0.9
-        save('./Ef.mat','Ef')
-        break;
-    end
-    if prob < 0.1
-        Ef = Ef + grad';
-    elseif prob < 0.6
-        Ef = Ef + 0.1*grad';
-    else
-        Ef = Ef + 0.01*grad';
-    end
-    iter = iter+1;
-end
+[psi,Ef]=cga(trans_prob,Ef);
+
 %% plot the functions
 subplot(4,1,1)
 plot(x,potential)
