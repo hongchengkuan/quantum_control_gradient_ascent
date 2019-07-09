@@ -10,8 +10,10 @@ class QuantumControlMorse:
         self.x_max = 2.85
         self.x = np.linspace(self.x_min, self.x_max, 128)
         self.t_min = 0
-        self.t_max = 30000
-        self.t = np.linspace(self.t_min, self.t_max, 100000)
+        # self.t_max = 30000
+        # self.t = np.linspace(self.t_min, self.t_max, 100000)
+        self.t_max = 250000
+        self.t = np.linspace(self.t_min, self.t_max, 833333)
 
         self.m = 1728.468338
         self.mu = 3.088 * self.x * np.exp(-self.x / .6)
@@ -29,8 +31,20 @@ class QuantumControlMorse:
 
         self.states = self.states / np.sqrt(self.dx)
 
-        self.psi_target = self.states[:, target]
-        self.psi_init = self.states[:, init]
+        self.psi_target = np.zeros(self.L)
+        self.psi_init = np.zeros(self.L)
+        for index in target:
+            if index > 0:
+                self.psi_target += self.states[:, np.abs(index)]
+            else:
+                self.psi_target -= self.states[:, np.abs(index)]
+        self.psi_target /= np.sqrt(len(target))
+        for index in init:
+            if index > 0:
+                self.psi_init += self.states[:, np.abs(index)]
+            else:
+                self.psi_init -= self.states[:, np.abs(index)]
+        self.psi_init /= np.sqrt(len(init))
 
     def transition_prob(self, Ef, nargout):
         m = self.m
@@ -205,8 +219,20 @@ class QuantumControlDoubleWell(QuantumControlMorse):
 
         self.states = self.states / np.sqrt(self.dx)
 
-        self.psi_target = self.states[:, target]
-        self.psi_init = self.states[:, init]
+        self.psi_target = np.zeros(self.L)
+        self.psi_init = np.zeros(self.L)
+        for index in target:
+            if index > 0:
+                self.psi_target += self.states[:, np.abs(index)]
+            else:
+                self.psi_target -= self.states[:, np.abs(index)]
+        self.psi_target /= np.sqrt(len(target))
+        for index in init:
+            if index > 0:
+                self.psi_init += self.states[:, np.abs(index)]
+            else:
+                self.psi_init -= self.states[:, np.abs(index)]
+        self.psi_init /= np.sqrt(len(init))
 
     def V_doublewell(self):
         x = self.x

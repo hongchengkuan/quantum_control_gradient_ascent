@@ -2,7 +2,7 @@ import quantum_control_utils as utils
 import numpy as np
 import time
 import matplotlib.pyplot as plt
-qcm = utils.QuantumControlMorse(0, 1)
+qcm = utils.QuantumControlMorse((3,), (5,))
 Ef = np.zeros(qcm.N)
 plt.rc('text', usetex=True)
 plt.rc('font', family='serif')
@@ -25,7 +25,7 @@ while True:
     time_iter = time.time() - time1
     print('iteration %d takes %f s' % (iter, time_iter))
 
-np.save('Ef', Ef)
+np.save('/home/rlair/work/chong009/quantum_control/numericalmethod/gradientdescent/quantum_control_gradient_ascent/3to5longer/Ef', Ef)
 fig, (ax1, ax2, ax3, ax4) = plt.subplots(4, 1)
 ax1.plot(qcm.x, qcm.potential)
 ax1.set_title(r'potential')
