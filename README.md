@@ -23,3 +23,10 @@ See the demo.m for usage.
 <img src="https://github.com/hongchengkuan/quantum_control_gradient_ascent/blob/master/0to1-2/0to1-2.png" height="350" width="430"><img src="https://github.com/hongchengkuan/quantum_control_gradient_ascent/blob/master/0to1-2/Ef.png" height="350" width="430">
 ### The ground state to the superposition between the first and the third excited state
 <img src="https://github.com/hongchengkuan/quantum_control_gradient_ascent/blob/master/0to1-3/0to1-3.png" height="350" width="430"><img src="https://github.com/hongchengkuan/quantum_control_gradient_ascent/blob/master/0to1-3/Ef.png" height="350" width="430">
+### Acknowledgement
+
+Christian R. Shelton proposed to use dynamic progamming for the calculation of the gradient.
+
+The line search and conjugate gradient ascent are based on "A COKOSNUT code for the control of the time-dependent Kohn–Sham model" by M. Sprengel, G. Ciaramella and A. Borz&#204;.
+
+The initial Crank-Nicolson implementation of the Sch&#246;dinger equation was due to Bryan M. Wong and Akber Raza.
