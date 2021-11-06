@@ -23,7 +23,7 @@ See the demo.m for usage.
 <img src="https://github.com/hongchengkuan/quantum_control_gradient_ascent/blob/master/0to1-2/0to1-2.png" height="350" width="430"><img src="https://github.com/hongchengkuan/quantum_control_gradient_ascent/blob/master/0to1-2/Ef.png" height="350" width="430">
 ### The ground state to the superposition between the first and the third excited state
 <img src="https://github.com/hongchengkuan/quantum_control_gradient_ascent/blob/master/0to1-3/0to1-3.png" height="350" width="430"><img src="https://github.com/hongchengkuan/quantum_control_gradient_ascent/blob/master/0to1-3/Ef.png" height="350" width="430">
-### Acknowledgement
+### Acknowledgements
 
 Christian R. Shelton proposed to use dynamic progamming for the calculation of the gradient.
 
