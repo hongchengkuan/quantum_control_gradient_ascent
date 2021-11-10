@@ -1,7 +1,7 @@
 # Quantum Control via Gradient Ascent
 This package provides a way to use gradient ascent to optimize the transition probability.
 
-See the demo.m for usage.
+See the matlab/demo.m and python/demo.py for usage.
 ## Experiments
 ### The gound state to the first excited state
 <img src="https://github.com/hongchengkuan/quantum_control_gradient_ascent/blob/master/0to1/0to1_morse.png" height="350" width="430"><img src="https://github.com/hongchengkuan/quantum_control_gradient_ascent/blob/master/0to1/Ef.png" height="350" width="430">
